@@ -15,6 +15,7 @@ from cythonOvershootSIP import getOvershootDist
 import pbsTools as pt
 import pylab as pl
 import sys
+import time
 
 # Grab the settings from the file:
 settingsDict = pt.getFromPickleJar(loadDir = './', fileNameSubString = '.settings')[0]
@@ -26,7 +27,9 @@ thetaInd = int(sys.argv[1])
 rP, rN, corr, N, theta, dt, nSims, maxY = settingsDict[thetaInd]
 
 # Run the sim, recovering monte carlo data:
+tic = time.time()
 overShootTemp = getOvershootDist(rP, rN, corr, N, theta-.01, dt, nSims)
+print time.time()-tic, 'sec Elapsed'
 
 # Make the histogram:
 bins = range(0,maxY)
