@@ -60,8 +60,8 @@ thetaVals = pl.linspace(thetaMin,thetaMax,thetaN)
 
 # Create the settings dictionary:
 settingsDict = {}
-for i in range(1,len(thetaVals)+1):
-    settingsDict[i] = [rP,rN,corr,N,thetaVals[i],dt,nSims,maxY]
+for i in range(0,len(thetaVals)):
+    settingsDict[i+1] = [rP,rN,corr,N,thetaVals[i],dt,nSims,maxY]
 
 # Write out settings file:
 settingsFileName = os.path.join(os.getcwd(),'jobSettings.settings')
